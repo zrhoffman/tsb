@@ -87,14 +87,22 @@ func (e *Executor) Execute() error {
 			if cfg.Patches[name] != nil {
 				for _, patch_item := range cfg.Patches[name] {
 					if patch_item.Str.Node != "" {
-						err = repo.Cherry(e.Dir(), name, patch_item.Str.Node)
+						if repo.BuildStrategy == BuildStrategyCherry {
+							err = repo.Cherry(e.Dir(), name, patch_item.Str.Node)
+						} else if repo.BuildStrategy == BuildStrategyMerge {
+							err = repo.Merge(e.Dir(), name, patch_item.Str.Node)
+						}
 						if err != nil {
 							return fmt.Errorf("Unable to apply %s to %s: "+patch_item.Str.Node, name, err.Error())
 						}
 					} else if patch_item.Sub != nil {
 						if len(patch_item.Sub.Changesets) > 0 {
 							for _, changeset := range patch_item.Sub.Changesets {
-								err = repo.Cherry(e.Dir(), name, changeset.Node)
+								if repo.BuildStrategy == BuildStrategyCherry {
+									err = repo.Cherry(e.Dir(), name, changeset.Node)
+								} else if repo.BuildStrategy == BuildStrategyMerge {
+									err = repo.Merge(e.Dir(), name, changeset.Node)
+								}
 								if err != nil {
 									return fmt.Errorf("Unable to apply %s to %s: "+changeset.Node, name, err.Error())
 								}
