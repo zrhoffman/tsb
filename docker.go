@@ -19,7 +19,7 @@ package main
 import (
 	"sort"
 
-	"github.com/comcast/tsb/docker-types"
+	"github.com/zrhoffman/tsb/docker-types"
 )
 
 type Compose types.Config

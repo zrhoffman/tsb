@@ -1,4 +1,4 @@
-module github.com/comcast/tsb
+module github.com/zrhoffman/tsb
 
 go 1.15
 

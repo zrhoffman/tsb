@@ -25,7 +25,7 @@ out for more details.
 The zeroth step is to get `tsb` itself. `tsb` is distributed as source, so
 you'll need a working [go](https://golang.org/dl) install.
 
-    go get github.com/comcast/tsb
+    go get github.com/zrhoffman/tsb
 
 That should install `tsb` in your `$GOPATH/bin` folder. Either add
 `$GOPATH/bin` to your path, symlink to it from somewhere in your path, or `sudo

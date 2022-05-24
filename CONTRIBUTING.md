@@ -2,7 +2,7 @@ Contributing
 ============
 
 Contributions are managed most easily via pull requests. This project is
-hosted at https://github.com/comcast/tsb . Head over, fork the
+hosted at https://github.com/zrhoffman/tsb . Head over, fork the
 project and open a pull request.
 
 Issues
